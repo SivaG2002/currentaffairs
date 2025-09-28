@@ -1,42 +1,162 @@
-#root {
-  max-width: 1280px;
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  margin: 0;
+  background-color: #121212; /* Dark background */
+  color: #e0e0e0; /* Light gray text */
+}
+
+main {
+  max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.page-title {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #ffffff;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 0.5rem;
+}
+
+/* Home Page */
+.home-container {
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.home-header {
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  color: white;
+  padding: 4rem 2rem;
+  border-radius: 12px;
+  margin-bottom: 3rem;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.home-header h1 {
+  font-size: 3.5rem;
+  margin: 0 0 1rem 0;
+  font-weight: 700;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.home-header p {
+    font-size: 1.25rem;
 }
 
-.card {
-  padding: 2em;
+.features-section {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin: 3rem 0;
 }
 
-.read-the-docs {
+.feature-card {
+  background-color: #1e1e1e;
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 30%;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+.feature-card h2 {
+    color: #007bff;
+}
+
+.home-footer {
+  margin-top: 3rem;
   color: #888;
+}
+
+/* News, MCQ, Minister cards */
+.news-container, .mcq-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.news-card, .mcq-card, .minister-card {
+  background-color: #1e1e1e;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border-left: 5px solid #007bff;
+  margin-bottom: 1.5rem; /* Added for minister card spacing */
+}
+
+.news-title {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+}
+
+.news-content, .mcq-question, .mcq-answer {
+    color: #c0c0c0;
+}
+
+/* Date Filter */
+.date-filter {
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.date-filter label {
+  font-size: 1.1rem;
+}
+
+#mcq-date {
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+  border: 1px solid #333;
+  padding: 0.5rem;
+  border-radius: 5px;
+}
+
+/* Tables */
+.ministers-table, .state-capitals-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #1e1e1e;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  overflow: hidden; /* This is important for border-radius to work on tables */
+  margin-top: 2rem;
+}
+
+.ministers-table th, .ministers-table td, 
+.state-capitals-table th, .state-capitals-table td {
+  padding: 1.25rem;
+  text-align: left;
+  border-bottom: 1px solid #333;
+}
+
+.ministers-table th, .state-capitals-table th {
+  background-color: #252525;
+  color: #007bff;
+  font-weight: 600;
+}
+
+.ministers-table tr:last-child td,
+.state-capitals-table tr:last-child td {
+    border-bottom: none;
+}
+
+.minister-card ul {
+    padding-left: 20px;
+}
+
+.minister-card li {
+    margin-bottom: 0.5rem;
 }
