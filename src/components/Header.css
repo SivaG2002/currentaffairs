@@ -18,6 +18,7 @@
   min-height: 70px;
   width: 100%;
   max-width: 1200px;
+  position: relative; /* Needed for absolute positioning of the menu */
 }
 
 .navbar-brand .navbar-item {
@@ -62,26 +63,31 @@
 
 @media (max-width: 768px) {
   .navbar-menu {
-    display: none;
-    flex-direction: column;
-    align-items: center; /* Center items horizontally */
-    width: 100%;
+    display: none; /* Hide by default */
     position: absolute;
-    top: 70px; /* Should match navbar height */
-    left: 0;
+    top: 70px; /* Position below the header */
+    right: 0; /* Align to the right edge of the navbar */
     background-color: #1e1e1e;
-    padding: 1rem 0;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+    border-radius: 8px;
+    padding: 1rem;
+    flex-direction: column;
+    width: 200px; /* Set a width for the dropdown */
   }
 
   .navbar-menu.is-active {
-    display: flex;
+    display: flex; /* Show when active */
   }
   
-  .navbar-item {
-      margin: 1rem 0;
-      text-align: center;
+  /* Override default item styles for the mobile menu */
+  .navbar-menu .navbar-item {
+      margin: 0.5rem 0;
+      padding: 0.5rem;
+      width: 100%;
+      text-align: left;
   }
-
+  
+  /* Make the burger visible on mobile */
   .navbar-burger {
     display: block;
   }

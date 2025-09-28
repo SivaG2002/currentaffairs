@@ -1,25 +1,18 @@
 
 import React, { useState, useEffect } from "react";
-import { storage } from "../firebase"; // Adjust the path if needed
-import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 const MCQ = () => {
   const [mcqData, setMcqData] = useState([]);
-  const [selectedDate, setSelectedDate] = useState("2024-07-27");
+  const [selectedDate, setSelectedDate] = useState("2025-06-01");
 
-  const handleFileUpload = async (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      const storageRef = ref(storage, `mcq/${file.name}`);
-      await uploadBytes(storageRef, file);
-      const url = await getDownloadURL(storageRef);
-      fetch(url)
-        .then((res) => res.json())
-        .then((data) => {
-          setMcqData(data);
-        });
-    }
-  };
+  useEffect(() => {
+    fetch("/mcq.json")
+      .then((res) => res.json())
+      .then((data) => {
+        setMcqData(data);
+      })
+      .catch(error => console.error("Error fetching MCQ data:", error));
+  }, []);
 
   const filteredMcqs = mcqData.filter((mcq) => mcq.date === selectedDate);
 
@@ -34,7 +27,6 @@ const MCQ = () => {
           value={selectedDate}
           onChange={(e) => setSelectedDate(e.target.value)}
         />
-        <input type="file" onChange={handleFileUpload} />
       </div>
       <div className="mcq-list">
         {filteredMcqs.length > 0 ? (
@@ -47,7 +39,7 @@ const MCQ = () => {
             </div>
           ))
         ) : (
-          <p>No MCQs found for the selected date. Please upload a mcq.json file</p>
+          <p>No MCQs found for the selected date.</p>
         )}
       </div>
     </div>
