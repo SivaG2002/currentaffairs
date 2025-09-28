@@ -1,13 +1,12 @@
 
 import React from 'react';
+import HomeCarousel from '../components/Carousel';
+import './Home.css';
 
 const Home = () => {
   return (
     <div className="home-container">
-      <header className="home-header">
-        <h1>Welcome to Your Current Affairs Hub</h1>
-        <p>Your one-stop destination for the latest news, quizzes, and general knowledge.</p>
-      </header>
+      <HomeCarousel />
       
       <section className="features-section">
         <div className="feature-card">
