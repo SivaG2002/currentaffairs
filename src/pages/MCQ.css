@@ -191,3 +191,37 @@
   padding: 2em 0.5em;
   border-radius: 8px;
 }
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+  .mcq-content {
+    flex-direction: column;
+    align-items: center; /* Center items vertically */
+    gap: 2rem;
+  }
+
+  .calendar-container,
+  .mcq-list {
+    flex: none; /* Reset flex property */
+    width: 100%; /* Take up full width */
+    max-width: 500px; /* Optional: constrain max-width on mobile */
+  }
+
+  .page-title {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .mcq-container {
+    padding: 1rem;
+  }
+
+  .mcq-card {
+    padding: 1rem;
+  }
+
+  .page-title {
+    font-size: 1.8rem;
+  }
+}
